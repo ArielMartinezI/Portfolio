@@ -1,0 +1,200 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+
+
+.footer_principal{
+    background-color: $color-dark-grey;
+    padding-top: 60px;
+    .error{
+        display: none;
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        top: 14px;
+        right: -2px;
+    }
+    @include breakpoint(tablet){
+        padding: 85px 140px 30px 140px;
+    }
+    .footer_content{
+        margin: 0 16px 87px 16px;
+        .title{
+            font-weight: 700;
+            font-size: 40px;
+            letter-spacing: -1.14px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .subtitle{
+            font-weight: 500;
+            font-size: 16px;
+            letter-spacing: 0;
+            color: $color-grey;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+
+            label{
+                display: block; //esto es para poner los elementos del formulario uno abajo del otro
+                margin-left: 24px;
+                text-transform: uppercase;
+                font-weight: 500;
+                letter-spacing: -0.22px;
+                font-size: 16px;
+                color: $color-grey;
+                transition: opacity 0.2s ease;
+                pointer-events: none;
+                color: $color-grey;
+            }
+
+            input, textarea{
+                box-sizing: border-box;
+                padding: 0px 10px 16px 24px;
+                width: 100%;
+                background: transparent;
+                border: none;
+                border-bottom: 1px solid $color-white;
+                margin-bottom: 32px;
+                font-weight: 500;
+                color: $color-white;
+                letter-spacing: -0.22px;
+                font-size: 16px;
+                outline: none;
+                text-transform: uppercase;
+            }
+            input:focus, textarea:focus{
+                border-bottom: 1px solid $color-green; //la linea blanca se hace verde al hacer foco
+            }
+
+            textarea{
+                resize: none;
+                height: 80px;
+            }
+
+            button{
+                background: none;
+                border-top: none;
+                border-left: none;
+                border-right: none;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                margin-left: auto;
+            }
+
+            //esta parte es la involucrada del hover de cada elemento del fomulario 
+            .form_group{
+                position: relative;
+                .error-text{
+                    font-weight: 500;
+                    font-size: 10px;
+                    letter-spacing: -0.17px;
+                    color: rgba(255, 111, 91, 1);
+                    position: absolute;
+                    bottom: 17px;
+                    right: 0;
+                    display: none;
+                }
+                input:invalid{
+                    border-bottom: 1px solid rgba(255, 111, 91, 1);
+                }
+                /* Mostrar mensaje si el input es inválido después de que el usuario haya escrito algo */
+                input:invalid:focus ~ .error-text, input:invalid:not(:placeholder-shown) ~ .error-text {
+                  display: block;
+                }
+                .form_group:focus + label{
+                    opacity: 0;
+                }
+            }
+        }
+
+        @include breakpoint(tablet){
+            width: 445px;
+            margin: 0 auto 92px auto;
+            .title{
+                font-size: 72px;
+                letter-spacing: -2.05px;
+            }
+            .subtitle{
+                font-size: 18px;
+                line-height: 28px;
+            }
+        }
+        @include breakpoint(desktop){
+            width: 100%;
+            margin: 0 0 92px 0;
+            display: flex;
+            gap: 50px;
+            .container{
+                width: 50%;
+                .title{
+                    text-align: start;
+                }
+                .subtitle{
+                    text-align: start;
+                    font-size: 15px;
+                    width: 375px;
+                }
+            }
+            form{
+                width: 50%;
+                .form_group{
+                    input:invalid:focus ~ .error{
+                        display:block;
+                    }
+                }
+            }
+        }
+    }
+    aside{
+        margin: 0 16px;
+        padding-top: 39px;
+        padding-bottom: 60px;
+        border-top: 1px solid $color-white;
+        .logo{
+            display: inline-block;
+            margin: 0 123px 20px 123px;
+            img{
+                width: 129px;
+                height: 32px;
+            }
+        }
+        .nav_principal{
+            ul{
+                @include reset_list();
+                gap: 25.6px;
+                justify-content: center;
+                margin-left: 45px;
+            }
+        }
+        @include breakpoint(tablet){
+            display: flex;
+            justify-content: space-between;
+            padding: 34px 0 43px 0;
+            align-items: center;
+            .logo{
+                margin: 0;
+                img{
+                    width: 172px;
+                }
+            }
+            .nav_principal ul{
+                gap: 32px;
+                margin: 0;
+                a{
+                    width: 24px;
+                    height: 24px;
+                    .redes{
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+            }
+        }
+        @include breakpoint(desktop){
+            padding-top: 43px;
+        }
+    }
+}

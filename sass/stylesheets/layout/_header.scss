@@ -1,0 +1,272 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+
+.header_principal{
+    @include breakpoint(tablet){
+        background-image: url('../../../assets/Group\ 17.png');
+        background-repeat: no-repeat;
+        background-size: 42.3%;
+        background-position-x: 100%;
+        background-position-y: -4%;
+    }
+    @include breakpoint(desktop){
+        background-image: url('../../../assets/Group\ 17.png');
+        background-repeat: no-repeat;
+        background-size: 30%;
+        background-position-x: 84%;
+        background-position-y: 0%;
+    }
+
+    .header_content{
+        width: min-content;
+        // haciendo margin left y margin rigth auto nos centra todo
+        margin-left: auto;
+        margin-right: auto;
+        background: linear-gradient(180deg, rgba(36, 36, 36, 0.0001) 0.65%, #242424 100%);
+        margin-bottom: 40px;
+        .logo{
+            display: inline-block;
+            margin: 20px 22px;
+            img{
+                width: 129px;
+                height: 32px;
+            }
+        }
+        .nav_principal{
+            ul{
+                @include reset_list();
+                gap: 25px;
+                margin: 0 10px 49px 10px;
+                .redes{
+                    width: 19.69px;
+                    height: 19.2px;
+                }
+            }
+        }
+        figure{
+            width: 174.21px;
+            height: 242px;
+        }
+        @include breakpoint(tablet){
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: auto;
+            background: none;
+            margin: 0 30px 90px 30px;
+            padding-top: 30px;
+            .logo{
+                margin: 0;
+                img{
+                    width: 172px;
+                }
+            }
+            .nav_principal ul{
+                margin: 0;
+                gap: 32px;
+                a{
+                    width: 24px;
+                    .redes{
+                        width: 24px;
+                    }
+                }
+            }
+            figure{
+                display: none;
+                .hombre{
+                    display: none;
+                }
+            }
+        }
+        @include breakpoint(desktop){
+            margin: 0 140px 121px 140px;
+            .nav_principal{
+                margin-right: 20px;
+            }
+        }
+    }
+
+    .header_hero{
+        margin: 0 16px 80px 16px;
+        display: flex;
+        flex-direction: column;
+        .title{
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 40px;
+            letter-spacing: -1.14px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 24px;
+            br{
+                display: none;
+            }
+            &::before{
+                position: absolute;
+                content: " ";
+                width: 225px;
+                height: 4px;
+                background-color: $color-green;
+                top: 80px;
+                right: 31px;
+            }
+        }
+        .subtitle{
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 26px;
+            letter-spacing: 0;
+            color: $color-grey;
+            text-align: center;
+            width: 343px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 24px;
+        }
+        .btn{
+            @include button();
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 2.6px;
+            color: $color-white;
+            margin: auto;
+        }
+        @include breakpoint(tablet){
+            margin: 0 30px 60px 30px;
+            display: inherit;
+            .title{
+                text-align: start;
+                font-size: 72px;
+                line-height: 72px;
+                letter-spacing: -2.05px;
+                width: 453px;
+                margin-bottom: 60px;
+                br{
+                    display: inline;
+                }
+                &::before{
+                    position: absolute;
+                    width: 402px;
+                    height: 6px;
+                    top: 214px;
+                    right: 50px;
+                }
+                
+            }
+            .subtitle{
+                text-align: start;
+                width: 421px;
+                margin: 0 0 34px 0;
+                font-size: 18px;
+                line-height: 28px;
+                font-weight: 500;
+            }
+        }
+        @include breakpoint(desktop){
+            margin: 0 140px 210px 140px;
+            .title{
+                position: relative;
+                width: 600px;
+                font-size: 75px;
+                line-height: 75px;
+                letter-spacing: -2.5px;
+                margin-bottom: 40px;
+                br{
+                    display: none;
+                }
+                &::before{
+                    position: absolute;
+                    content: "";
+                    width: 418px;
+                    height: 6px;
+                    background-color: $color-green;
+                    top: 148px;
+                    right: 68px;
+                }
+            }
+            .subtitle{
+                margin-bottom: 50px;
+            }
+        }
+    }
+
+    .stats{
+        margin: 0 16px 80px 16px;
+        border-top: 1px solid $color-border;
+        border-bottom: 1px solid $color-border;
+        article{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            margin-bottom: 24px;
+            &:last-child{
+                margin-bottom: 40px;
+            }
+            &:first-child{
+                margin-top: 40px;
+            }
+            .lenguage{
+                font-weight: 700;
+                font-size: 32px;
+                letter-spacing: -1px;
+            }
+            .description{
+                font-weight: 500;
+                font-size: 16px;
+                letter-spacing: 0;
+                color: $color-grey;
+            }
+        }
+        @include breakpoint(tablet){
+            margin: 0 30px 100px 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            row-gap: 52px;
+            column-gap: 7px;
+            border-bottom: 0;
+            padding-top: 52px;
+            article{
+                display: inherit;
+                margin: 0;
+                width: 345px;
+                height: 98px;
+                &:first-child, &:last-child{
+                    margin: 0;
+
+                }
+                .lenguage{
+                    text-align: start;
+                    font-size: 48px;
+                    letter-spacing: -1.5px;
+                    margin-bottom: 14px;
+                }
+                .description{
+                    text-align: start;
+                    font-size: 18px;
+                    letter-spacing: 0;
+                }
+            }
+        }
+        @include breakpoint(desktop){
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            margin: 0 140px 140px 140px;
+            box-sizing: border-box;
+            padding-top: 72px;
+            row-gap: 54px;
+            column-gap: 34px;
+            article{
+                width: 300px;
+                .lenguage{
+                    font-size: 40px;
+                }
+                .description{
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+}

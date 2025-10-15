@@ -1,0 +1,48 @@
+@use './variables' as *;
+
+//Nuestros mxin de conquer
+@mixin breakpoint($bp){
+  
+  @if $bp == tablet{
+    @media (min-width: $bp-tablet){
+      @content;
+    }
+  }
+
+  @if $bp == tablethorizontal {
+    @media (min-width: $bp-tablet-horizontal){
+      @content;
+    }
+  }
+
+  @if $bp == desktop{
+    @media (min-width: $bp-desktop){
+      @content;
+    }
+  }
+
+  @if $bp == desktopxl{
+    @media (min-width: $bp-desktop-xl){
+      @content;
+    }
+  }
+
+}
+
+@mixin reset_list(){
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+@mixin button(){
+  display: inline-block;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  text-decoration: none;
+  border-bottom: 3px solid $color-green;
+  &:hover{
+    color: $color-green;
+  }
+}

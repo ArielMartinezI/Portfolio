@@ -1,0 +1,106 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+
+.main_principal{
+    margin: 0 16px 80px 16px;
+    @include breakpoint(desktop){
+        margin: 0;
+    }
+    .main_content{
+        @include breakpoint(tablet){
+            margin: 0 30px 100px 30px;
+        }
+        @include breakpoint(desktop){
+            margin: 0 140px 139px 140px;
+        }
+        .main_header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            .title{
+                font-weight: 700;
+                font-size: 40px;
+                letter-spacing: -1.14px;
+            }
+            @include breakpoint(tablet){
+                margin-bottom: 60px;
+                .title{
+                    font-size: 72px;
+                    letter-spacing: -2.05px;
+                }
+            }
+        }
+        
+        .main_hero{
+            article{
+                margin-bottom: 40px;
+                img{
+                    margin-bottom: 20px;
+                }
+                .content{
+                    margin-bottom: 20px;
+                    .title{
+                        margin-bottom: 7px;
+                        font-size: 24px;
+                        font-weight: 700;
+                        letter-spacing: 0;
+                        text-transform: uppercase;
+                    }
+                    .lenguages{
+                        display: flex;
+                        gap: 18px;
+                        span{
+                            font-weight: 500;
+                            font-size: 18px;
+                            letter-spacing: 0;
+                            color: $color-grey;
+                            text-transform: uppercase;
+                        }
+                    }
+                }
+                .buttons{
+                    @include reset_list();
+                    gap: 30px;
+                }
+            }
+            @include breakpoint(tablet){
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr 1fr;
+                column-gap: 24px;
+                row-gap: 60px;
+            }
+            @include breakpoint(desktop){
+                row-gap: 0px;
+                article{
+                    position: relative;
+                    img{
+                        transition: filter 0.3s ease; /* Transición suave */
+                        display: block; /* evitar problemas con inline-img */
+                    }
+                    .buttons{
+                        opacity: 0;
+                        display: flex;
+                        flex-direction: column;
+                        position: absolute;
+                        top: 161px;
+                        right: 71px;
+                        transform: translate(-50%, -50%); /* centramos los botones en la imagen */
+                        z-index: 2; /* asegurarse de que los botones se vean por encima de la imagen*/
+                        transition: opacity 0.3s ease;
+                        text-align: center;
+                    }
+                    &:hover{
+                        img{
+                            filter: brightness(30%);
+                        }
+                        .buttons{
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
